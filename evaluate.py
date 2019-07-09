@@ -1,3 +1,4 @@
+
 from datasets.dataloader import LIVEDatasetLoader, TID2013DatasetLoader, TID2013_GTtable
 import numpy as np
 import torch
@@ -10,6 +11,9 @@ from torch.autograd import Variable
 from models.deepQA import deepIQA_model as predictNet
 
 import skimage.measure
+
+from functools import partial
+import pickle
 
 
 def showfigures_TID13():
@@ -40,7 +44,9 @@ def showfigures_TID13():
 
     # load the trained model
     model = predictNet()
-    model_dict = torch.load('snapshots/deepQA_TID13_seed32_0.9286_0.9244_epoch3780.pth')['model']
+    ## ml add
+    the_used_model = "./deepQA_TID13_seed32_0.9286_0.9244_epoch3780.pth"
+    model_dict = torch.load(the_used_model)['model']
     model.load_state_dict(model_dict)  # copyWeights(model, model_dict, freeze=False)
     model.eval()
     model.to('cuda')

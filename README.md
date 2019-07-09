@@ -69,3 +69,30 @@ The "results" folder contains the training process and two examples for both LIV
 **Two examples from TID2013** 
 <div align=center><img width="600" src="https://github.com/LeonLIU08/DeepQA-with-Pytorch/blob/master/results/TID13_exp1.png"/></div>
 <div align=center><img width="600" src="https://github.com/LeonLIU08/DeepQA-with-Pytorch/blob/master/results/TID13_exp2.png"/></div>
+
+
+
+## add by ml
+### environment setup
+```
+conda install python=2.7
+conda install pytorch torchvision cudatoolkit=8.0
+pip install -U scipy
+pip install scikit-image
+pip install numpy==1.15.0
+
+```
+ok the iqa3 can use
+
+不出意外会报这个错
+```
+File "/home/ml/anaconda3/envs/iqa2/lib/python3.6/site-packages/torch/serialization.py", line 542, in _load
+    result = unpickler.load()
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xbc in position 0: ordinal not in range(128)
+```
+
+google一下
+```
+torch.load() 'ascii' codec can't decode byte 0xbc
+```
+[好像是因为用python3去loadpython2的pth文件会出这个问题](https://github.com/pytorch/pytorch/issues/5994)
